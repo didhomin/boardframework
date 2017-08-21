@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kitri.admin.board.dao.BoardAdminDao">
+    
+    <select id="boardList" resultType="boardListDto">
+       select b.bcode,c.ccode,b.bname,b.btype,c.cname,
+       decode(b.btype, 5, 'reboard',
+        				6, 'album' ,
+         				7, 'bbs'  ,
+        					'board') control 
+        from board_list b , category c
+        where b.ccode=c.ccode
+    </select>
+</mapper>
